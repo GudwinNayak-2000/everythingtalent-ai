@@ -84,14 +84,14 @@ export const Card: React.FC<CardProps> = ({
            dark:to-slate-950 relative -top-[25%] h-[600px] w-[100%] rounded-2xl p-6 md:p-10 origin-top`}
       >
         <div className={`inline-flex gap-8 h-full w-full items-start justify-start`}>
-          <div className={`relative md:w-[40%] w-full h-full flex flex-col items-start justify-start gap-2`}>
+          <div className={`relative lg:w-[40%] w-full h-full flex flex-col items-start justify-start gap-4 lg:gap-2`}>
             <p className="text-sm text-[#983EEA] font-medium">{label}</p>
             <h2 className="text-3xl text-black font-bold dark:text-gray-300">{year}</h2>
             <p className="text-gray-600 dark:text-gray-300 text-sm md:text-lg mt-2">{desc}</p>
-            <div className="flex flex-wrap gap-4 mt-4">
+            <div className="grid grid-cols-2 lg:flex lg:flex-wrap gap-4 mt-4">
               {cardData.map((data) => (
-                <div key={data.id} className="p-3 bg-gray-800 rounded-lg flex flex-col items-start w-[200px]">
-                  <p className="text-2xl font-semibold">{data.label}</p>
+                <div key={data.id} className="p-3 bg-gray-800 rounded-lg flex flex-col items-start lg:w-[200px]">
+                  <p className="text-xl text-purple-600 lg:text-2xl font-bold">{data.label}</p>
                   <p className="text-sm">{data.title}</p>
                 </div>
               ))}
@@ -99,7 +99,7 @@ export const Card: React.FC<CardProps> = ({
           </div>
           
           <div
-            className={`relative w-[60%] hidden md:flex h-full rounded-lg overflow-hidden`}
+            className={`relative w-[60%] hidden lg:flex h-full rounded-lg overflow-hidden`}
           >
             <motion.div
               className={`w-full h-full`}

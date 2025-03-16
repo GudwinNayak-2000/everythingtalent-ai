@@ -65,7 +65,7 @@ export function WorldMap({
     >
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="h-[495px] w-[1056px] object-cover pointer-events-none select-none"
+        className="h-full w-full object-cover pointer-events-none select-none"
         alt="world map"
         height="495"
         width="1056"
