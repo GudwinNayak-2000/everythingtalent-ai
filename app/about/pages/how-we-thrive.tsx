@@ -6,9 +6,9 @@ import StoryCard from "../components/story-card";
 import InsightImage from "@/assets/images/insight-img-2.webp";
 const HowWeThrive = () => {
   return (
-    <section className="mx-auto max-w-7xl">
-      <div className="grid grid-cols-2">
-        <div>
+    <section className="max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="hidden md:flex">
           <Image
             src={InsightImage}
             alt="How We Thrive"
@@ -18,7 +18,7 @@ const HowWeThrive = () => {
           />
         </div>
         <div className="flex flex-col space-y-8">
-          <div className="inline-flex items-center gap-2">
+          <div className="inline-flex flex-wrap items-center gap-2">
             <h2 className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-5xl font-bold text-transparent">
               How
             </h2>

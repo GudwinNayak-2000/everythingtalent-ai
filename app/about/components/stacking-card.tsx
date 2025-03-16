@@ -73,7 +73,7 @@ export const Card: React.FC<CardProps> = ({
   return (
     <div
       ref={container}
-      className="min-h-[900px] w-full min-w-[1300px] flex items-center justify-center sticky top-0"
+      className="min-h-[900px] w-full flex items-center justify-center sticky top-0"
     >
       <motion.div
         style={{
@@ -81,16 +81,16 @@ export const Card: React.FC<CardProps> = ({
           top: `calc(-5vh + ${i * 25}px)`,
         }}
         className={`flex flex-col shadow-xl bg-gradient-to-br from-slate-200 via-[#F5F3FC] to-[#e9d5ff00] dark:from-black dark:via-slate-900
-           dark:to-slate-950 relative -top-[25%] h-[500px] w-[100%] rounded-md p-10 origin-top`}
+           dark:to-slate-950 relative -top-[25%] h-[600px] w-[100%] rounded-2xl p-6 md:p-10 origin-top`}
       >
-        <div className={`grid grid-cols-2 gap-10 h-full w-full`}>
-          <div className={`relative top-[10%] flex flex-col gap-2`}>
-            <p className="text-sm font-semibold">{label}</p>
-            <h2 className="text-3xl font-bold text-gray-300">{year}</h2>
-            <p className="text-sm mt-2">{desc}</p>
+        <div className={`inline-flex gap-8 h-full w-full items-start justify-start`}>
+          <div className={`relative md:w-[40%] w-full h-full flex flex-col items-start justify-start gap-2`}>
+            <p className="text-sm text-[#983EEA] font-medium">{label}</p>
+            <h2 className="text-3xl text-black font-bold dark:text-gray-300">{year}</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-sm md:text-lg mt-2">{desc}</p>
             <div className="flex flex-wrap gap-4 mt-4">
               {cardData.map((data) => (
-                <div key={data.id} className="p-3 bg-gray-800 rounded-lg flex flex-col items-start w-[220px]">
+                <div key={data.id} className="p-3 bg-gray-800 rounded-lg flex flex-col items-start w-[200px]">
                   <p className="text-2xl font-semibold">{data.label}</p>
                   <p className="text-sm">{data.title}</p>
                 </div>
@@ -99,7 +99,7 @@ export const Card: React.FC<CardProps> = ({
           </div>
           
           <div
-            className={`relative h-full rounded-lg overflow-hidden `}
+            className={`relative w-[60%] hidden md:flex h-full rounded-lg overflow-hidden`}
           >
             <motion.div
               className={`w-full h-full`}

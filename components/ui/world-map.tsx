@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "motion/react";
+import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import DottedMap from "dotted-map";
 import Image from "next/image";
 import { useTheme } from "next-themes";
@@ -16,26 +16,31 @@ interface MapProps {
 
 export function WorldMap({
   dots = [
-    { start: { lat: 64.2008, lng: -149.4937, label: "Alaska" }, end: { lat: 34.0522, lng: -118.2437, label: "Los Angeles" } }, // Alaska -> LA
-    { start: { lat: 64.2008, lng: -149.4937, label: "Alaska" }, end: { lat: -15.7975, lng: -47.8919, label: "Brasília" } }, // Alaska -> Brasília
-    { start: { lat: -15.7975, lng: -47.8919, label: "Brasília" }, end: { lat: 38.7223, lng: -9.1393, label: "Lisbon" } }, // Brasília -> Lisbon
-    { start: { lat: 51.5074, lng: -0.1278, label: "London" }, end: { lat: 28.6139, lng: 77.209, label: "New Delhi" } }, // London -> New Delhi
-    { start: { lat: 28.6139, lng: 77.209, label: "New Delhi" }, end: { lat: 43.1332, lng: 131.9113, label: "Vladivostok" } }, // New Delhi -> Vladivostok
-    { start: { lat: 28.6139, lng: 77.209, label: "New Delhi" }, end: { lat: -1.2921, lng: 36.8219, label: "Nairobi" } }, // New Delhi -> Nairobi
+    { start: { lat: 64.2008, lng: -149.4937, label: "Alaska" }, end: { lat: 34.0522, lng: -118.2437, label: "Los Angeles" } },
+    { start: { lat: 64.2008, lng: -149.4937, label: "Alaska" }, end: { lat: -15.7975, lng: -47.8919, label: "Brasília" } },
+    { start: { lat: -15.7975, lng: -47.8919, label: "Brasília" }, end: { lat: 38.7223, lng: -9.1393, label: "Lisbon" } },
+    { start: { lat: 51.5074, lng: -0.1278, label: "London" }, end: { lat: 28.6139, lng: 77.209, label: "New Delhi" } },
+    { start: { lat: 28.6139, lng: 77.209, label: "New Delhi" }, end: { lat: 43.1332, lng: 131.9113, label: "Vladivostok" } },
+    { start: { lat: 28.6139, lng: 77.209, label: "New Delhi" }, end: { lat: -1.2921, lng: 36.8219, label: "Nairobi" } },
   ],
   lineColor = "#0ea5e9",
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
-
   const { theme } = useTheme();
+  const [svgMap, setSvgMap] = useState("");
 
-  const svgMap = map.getSVG({
-    radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
-    shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
-  });
+  useEffect(() => {
+    const map = new DottedMap({ height: 100, grid: "diagonal" });
+
+    const updatedSvgMap = map.getSVG({
+      radius: 0.22,
+      color: theme === "dark" ? "#FFFFFF40" : "#00000040",
+      shape: "circle",
+      backgroundColor: theme === "dark" ? "#000" : "#F5F5F5",
+    });
+
+    setSvgMap(updatedSvgMap);
+  }, [theme]);
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -53,10 +58,14 @@ export function WorldMap({
   };
 
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans">
+    <div
+      className={`w-full lg:min-h-screen relative aspect-[2/1] rounded-lg font-sans transition-all duration-300 ${
+        theme === "dark" ? "bg-[#0B0F1A]" : "bg-[#F5F5F5]"
+      }`}
+    >
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
+        className="h-[495px] w-[1056px] object-cover pointer-events-none select-none"
         alt="world map"
         height="495"
         width="1056"
@@ -79,7 +88,6 @@ export function WorldMap({
                 strokeWidth="1"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                
                 transition={{ duration: 1, delay: 0.5 * i, ease: "easeOut" }}
               />
             </g>
@@ -100,7 +108,6 @@ export function WorldMap({
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
           return (
             <g key={`points-group-${i}`}>
-              {/* Start Point */}
               <g key={`start-${i}`}>
                 <circle cx={startPoint.x} cy={startPoint.y} r="4" fill={lineColor} />
                 <text
@@ -114,7 +121,6 @@ export function WorldMap({
                 </text>
               </g>
 
-              {/* End Point */}
               <g key={`end-${i}`}>
                 <circle cx={endPoint.x} cy={endPoint.y} r="4" fill={lineColor} />
                 <text

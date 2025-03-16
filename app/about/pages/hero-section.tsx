@@ -1,25 +1,27 @@
 import { Button } from '@/components/ui/button'
-import HeroImage from '@/assets/images/hero-image.webp'
+import HeroImage from '@/assets/images/hero-image.jpg'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-
+import { motion } from 'framer-motion'
 const HeroSection = () => {
     return (
-        <section className='mx-auto px-20 relative'>
-            <div className='grid grid-cols-2'>
-                <div className='flex flex-col justify-evenly'>
+        <section className='mx-auto z-10 flex flex-col justify-center items-center my-auto max-w-7xl py-20 px-4 md:px-20 relative w-full h-full lg:min-h-screen'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-0'>
+                <div className='flex flex-col gap-6 md:gap-0 justify-evenly'>
                     <p className='uppercase font-semibold'>About us</p>
-                    <h2 className='text-5xl font-bold w-full max-w-xl leading-14'>
-                        Shaping the Next Generation of HR <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Tech</span>
-                        <br />
+                    <h2 className='flex flex-wrap text-4xl md:text-5xl font-bold w-full md:max-w-xl leading-10 md:leading-14'>
+                        Shaping the Next Generation of HR 
+                        <div className='flex flex-wrap gap-2'>
+                        <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Tech</span>
                         <span className="bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 bg-clip-text text-transparent">
                             Recruitment.
                         </span>
+                        </div>
                     </h2>
                     <p className='w-full max-w-lg text-lg'>
                         At Everything Talent, we help you launch your recruitment into a new dimension.
                     </p>
-                    <Button className=" w-[200px] h-fit py-3 whitespace-nowrap ring-offset-background focus-visible:outline-none 
+                    <Button className="w-[200px] capitalize h-fit py-3 whitespace-nowrap ring-offset-background focus-visible:outline-none 
                     focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
                     disabled:opacity-50 group relative inline-flex animate-rainbow cursor-pointer items-center justify-center
                     bg-[length:200%] font-medium text-white dark:text-black transition-all duration-500 ease-in-out
@@ -34,12 +36,15 @@ const HeroSection = () => {
                     </Button>
 
                 </div>
-                <div className="relative mx-auto w-[500px] h-[500px] p-[5px] rounded-2xl bg-gradient-to-tr from-[#0EA5E9] via-[#E879F9] to-[#FACC15]">
-                    <div className="absolute -z-10 -right-20 md:-right-24 -top-20 h-[300px] w-[480px] md:h-[600px] md:w-[780px] rounded-full bg-blue-500/20 blur-3xl">
+                <motion.div
+                 initial={{ y: -100, opacity: 0 }} 
+                 animate={{ y: 0, opacity: 1 }} 
+                 transition={{ duration: 1, ease: 'easeOut' }}
+                className="relative -z-10 mx-auto w-full h-[500px] md:w-[500px] md:h-[500px] p-[5px] rounded-2xl bg-gradient-to-tr from-[#0EA5E9] via-[#E879F9] to-[#FACC15]">
+                    <div className="absolute -z-10 inset-0 -right-20 md:-right-24 -top-20 h-[300px] w-[480px] md:h-[600px] md:w-[780px] rounded-full bg-blue-500/20 blur-3xl">
                     </div>
-                    <Image src={HeroImage} alt='hero' className="rounded-2xl h-full w-full " />
-
-                </div>
+                    <Image src={HeroImage} alt='hero' width={500} height={500} className="rounded-2xl object-fill h-full w-full " />
+                </motion.div>
             </div>
         </section>
     )

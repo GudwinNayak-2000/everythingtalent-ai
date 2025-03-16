@@ -2,18 +2,18 @@ import React from "react";
 import { Twitter,Facebook,Linkedin,Youtube } from "lucide-react";
 import Image from "next/image";
 import footerImg from "@/assets/images/bottom_san_fransisco_skyline.webp";
+import footerLogo from "@/assets/icons/acme-logo-dark (1).webp";
+
 const Footer = () => {
   return (
-    <footer className="relative min-h-screen w-full bg-gradient-to-br from-purple-50 via-pink-50 to-white
-     dark:from-black dark:via-slate-900 dark:to-slate-950 py-8 sm:py-16 md:py-28 px-4 sm:px-6 lg:px-8">
-     <div className="">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start">
-        {/* Left Section */}
+    <footer className="relative lg:min-h-screen h-full w-full flex flex-col justify-between bg-black py-8 sm:py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
+      <div className="lg:max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start">
         <div className="md:w-1/3 mb-6 md:mb-0">
+          <Image src={footerLogo} alt="" className="w-[160px] object-fill h-[160px]"/>
           <div className="flex items-center space-x-2">
-            <h2 className="text-xl font-bold">Everything Talent</h2>
+            <h2 className="text-3xl font-bold text-white dark:text-white">Everything Talent</h2>
           </div>
-          <p className="text-gray-400 mt-2">
+          <p className="text-gray-400 mt-2 w-[300px]">
             Enhancing Hiring with AI-powered assessment and tracking for accurate recruitment
           </p>
           <div className="flex space-x-4 mt-4">
@@ -60,12 +60,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full">
-        <Image src={footerImg} alt="" className="w-full object-fill h-[400px]"/>
+      <div className="">
+        <Image src={footerImg} alt="" className="w-full object-fill lg:h-[400px]"/>
         <p className="text-white text-center">© 2025 Everything Talent Labs, LLC. All rights reserved.</p>
-      </div>
-    </div>
+      </div>     
     </footer>
   );
 };

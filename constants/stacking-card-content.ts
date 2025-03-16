@@ -1,4 +1,6 @@
 import img1 from "@/assets/images/2024.webp"
+import img2 from "@/assets/images/2023.webp"
+import img3 from "@/assets/images/2022.webp"
 
 export type stackingCardItems={
     id:string;
@@ -62,7 +64,7 @@ export const stackingCardContent:stackingCardItems[]=[
                 title:"Users"
             }
         ],
-        image:img1
+        image:img2
     },
     {
         id:"3",
@@ -86,6 +88,6 @@ export const stackingCardContent:stackingCardItems[]=[
                 title:"Clients"
             }
         ],
-        image:img1
+        image:img3
     }
 ]
