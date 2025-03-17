@@ -85,7 +85,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 lg:px-16">
         <nav className="w-full h-11 flex items-center justify-between">
-          <div className="flex h-full items-center space-x-2 lg:space-x-4 border-2 border-slate-700/30 dark:border-slate-300/30 hover:bg-[#E2E8F0] rounded-lg px-4">
+          <div className="flex h-full items-center space-x-2 lg:space-x-4 border-2 border-slate-700/30 dark:border-slate-300/30 hover:bg-[#E2E8F0] dark:hover:bg-gray-700 rounded-lg px-4">
             <Image src={Logo} alt="logo" width={32} height={32} />
             <div className="h-6 w-[0.75px] bg-slate-700/30 dark:bg-slate-300/30"></div>
             <ul className="hidden lg:flex items-center space-x-8 font-medium text-sm">
@@ -215,39 +215,47 @@ hover:after:opacity-100"
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-0 top-[60px] w-screen bg-white dark:bg-gray-900 shadow-md border-t dark:border-gray-700 z-50"
+                    className="absolute left-0 top-[60px] w-screen bg-slate-100 dark:bg-gray-900 shadow-md border-t dark:border-gray-700 z-50"
                   >
-                    <ul className="flex flex-col py-4 text-lg text-center font-medium">
-                      <li>
+                    <ul className="flex flex-col items-start p-2 text-sm font-medium">
+                      <li className="">
                         <a
                           href="/dashboard"
                           className="block py-3 hover:bg-gray-100 dark:hover:bg-gray-800"
                         >
-                          Dashboard
+                          Home
                         </a>
                       </li>
                       <li>
                         <a
-                          href="/settings"
+                          href="/products"
                           className="block py-3 hover:bg-gray-100 dark:hover:bg-gray-800"
                         >
-                          Settings
+                          Products
                         </a>
                       </li>
                       <li>
                         <a
-                          href="/profile"
+                          href="/pricing"
                           className="block py-3 hover:bg-gray-100 dark:hover:bg-gray-800"
                         >
-                          Profile
+                         Pricing
                         </a>
                       </li>
+
                       <li>
+                        <a href="/blog" className="block py-3 hover:bg-gray-100 dark:hover:bg-gray-800">Blog</a>
+                      </li>
+                      <li>
+                        <a href="/support" className="block py-3 hover:bg-gray-100 dark:hover:bg-gray-800">Support</a>
+                      </li>
+                      <li className="w-full py-1 bg-slate-200 shadow-sm dark:bg-gray-800 px-4 rounded-md flex items-center text-center justify-center">
                         <a
-                          href="/logout"
-                          className="block py-3 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+                          href="/login"
+                          className="w-full flex items-center gap-4 justify-center text-lg text-black hover:bg-gray-100 dark:hover:bg-gray-800"
                         >
-                          Logout
+                          Login
+                          <ArrowRight/>
                         </a>
                       </li>
                     </ul>

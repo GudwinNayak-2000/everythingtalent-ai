@@ -6,12 +6,12 @@ import footerLogo from "@/assets/icons/acme-logo-dark (1).webp";
 
 const Footer = () => {
   return (
-    <footer className="relative lg:min-h-screen h-full w-full flex flex-col justify-between bg-black py-8 sm:py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <footer className="relative lg:min-h-screen h-full w-full flex flex-col justify-between bg-slate-100 dark:bg-slate-950 py-8 sm:py-16 lg:py-28 px-4 sm:px-6 lg:px-8">
       <div className="lg:max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start">
         <div className="md:w-1/3 mb-6 md:mb-0">
           <Image src={footerLogo} alt="" className="w-[160px] object-fill h-[160px]"/>
           <div className="flex items-center space-x-2">
-            <h2 className="text-3xl font-bold text-white dark:text-white">Everything Talent</h2>
+            <h2 className="text-3xl font-bold text-black dark:text-white">Everything Talent</h2>
           </div>
           <p className="text-gray-400 mt-2 w-[300px]">
             Enhancing Hiring with AI-powered assessment and tracking for accurate recruitment
@@ -26,7 +26,7 @@ const Footer = () => {
 
         <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8 text-gray-400">
           <div>
-            <h3 className="font-bold text-white">RESOURCES</h3>
+            <h3 className="font-bold text-black dark:text-white">RESOURCES</h3>
             <ul className="mt-2 space-y-1">
               <li>Blogs</li>
               <li>Success Stories</li>
@@ -38,7 +38,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-white">GET STARTED</h3>
+            <h3 className="font-bold text-black dark:text-white">GET STARTED</h3>
             <ul className="mt-2 space-y-1">
               <li>Pricing</li>
               <li>Hiring Solutions</li>
@@ -50,7 +50,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-white">LEGAL</h3>
+            <h3 className="font-bold text-black dark:text-white">LEGAL</h3>
             <ul className="mt-2 space-y-1">
               <li>Privacy Policy</li>
               <li>Terms of Service</li>

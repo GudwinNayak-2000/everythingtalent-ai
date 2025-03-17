@@ -5,7 +5,8 @@ import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 const HeroSection = () => {
     return (
-        <section className='mx-auto z-10 flex flex-col justify-center items-center my-auto max-w-7xl py-20 px-4 md:px-20 relative w-full h-full lg:min-h-screen'>
+        <section className='mx-auto z-10 flex flex-col justify-center items-center my-auto max-w-7xl py-20 px-4 md:px-20 relative
+         w-full h-full lg:min-h-screen'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-0'>
                 <div className='flex flex-col gap-6 md:gap-0 justify-evenly'>
                     <p className='uppercase font-semibold'>About us</p>

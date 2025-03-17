@@ -9,9 +9,9 @@ type Props = {
 
 const OverlayCard = ({ title, description }: Props) => {
   return (
-    <div className="flex h-full w-full justify-center items-center px-4 absolute top-0 lg:top-1/2 
+    <div className="flex h-full z-50 w-full justify-center items-center px-4 absolute top-0 lg:top-1/2 
      lg:-translate-y-1/2 left-0 lg:left-1/2 lg:-translate-x-1/2">
-      <div className="border-2 gradient-border  max-w-5xl group rounded-3xl px-6 sm:px-10 md:px-12  overflow-hidden w-full sm:w-3/4 md:w-2/3 lg:w-1/2 h-[400px] flex justify-center items-center transform transition-all duration-700 ease-out opacity-80 scale-100 group dark:bg-gradient-to-r
+      <div className="border-2 z-50 gradient-border  max-w-5xl group rounded-3xl px-6 sm:px-10 md:px-12  overflow-hidden w-full sm:w-3/4 md:w-2/3 lg:w-1/2 h-[400px] flex justify-center items-center transform transition-all duration-700 ease-out opacity-80 scale-100 group dark:bg-gradient-to-r
        dark:from-[#1e0e24] dark:to-[#26161b] dark:bg-opacity-60 bg-gradient-to-r from-[#e9d5ff] to-[#bfdbfe] bg-opacity-60
        
        ">

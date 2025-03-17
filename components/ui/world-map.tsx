@@ -30,17 +30,19 @@ export function WorldMap({
   const [svgMap, setSvgMap] = useState("");
 
   useEffect(() => {
-    const map = new DottedMap({ height: 100, grid: "diagonal" });
+    if (!svgMap) {
+      const map = new DottedMap({ height: 100, grid: "diagonal" });
 
-    const updatedSvgMap = map.getSVG({
-      radius: 0.22,
-      color: theme === "dark" ? "#FFFFFF40" : "#00000040",
-      shape: "circle",
-      backgroundColor: theme === "dark" ? "#000" : "#F5F5F5",
-    });
+      const initialSvgMap = map.getSVG({
+        radius: 0.22,
+        color: theme === "dark" ? "#FFFFFF" : "#000000", // White dots in dark mode, black in light mode
+        shape: "circle",
+        backgroundColor: "transparent",
+      });
 
-    setSvgMap(updatedSvgMap);
-  }, [theme]);
+      setSvgMap(initialSvgMap);
+    }
+  }, [svgMap, theme]);
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -58,19 +60,25 @@ export function WorldMap({
   };
 
   return (
-    <div
-      className={`w-full lg:min-h-screen relative aspect-[2/1] rounded-lg font-sans transition-all duration-300 ${
-        theme === "dark" ? "bg-[#0B0F1A]" : "bg-[#F5F5F5]"
-      }`}
-    >
+    <div className="relative w-full lg:min-h-screen aspect-[2/1] rounded-lg font-sans transition-all duration-300">
+      {/* Background Layer */}
+      <div
+        className={`absolute opacity-80 z-50 inset-0 w-full h-full rounded-lg transition-all duration-300 ${
+          theme === "dark" ? "bg-[#0B0F1A]" : "bg-[#F5F5F5]"
+        }`}
+      />
+
+      {/* World Map */}
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="h-full w-full object-cover pointer-events-none select-none"
+        className="h-full w-full object-cover pointer-events-none select-none relative"
         alt="world map"
         height="495"
         width="1056"
         draggable={false}
       />
+
+      {/* Overlaying Paths and Points */}
       <svg
         ref={svgRef}
         viewBox="0 0 800 400"
@@ -109,26 +117,36 @@ export function WorldMap({
           return (
             <g key={`points-group-${i}`}>
               <g key={`start-${i}`}>
-                <circle cx={startPoint.x} cy={startPoint.y} r="4" fill={lineColor} />
+                <circle
+                  cx={startPoint.x}
+                  cy={startPoint.y}
+                  r="4"
+                  fill={theme === "dark" ? "" : "#D3D3D3"}
+                />
                 <text
                   x={startPoint.x + 5}
                   y={startPoint.y - 5}
                   textAnchor="start"
                   fontSize="8"
-                  fill={lineColor}
+                  fill={theme === "dark" ? "#818589" : "#D3D3D3"}
                 >
                   {dot.start.label}
                 </text>
               </g>
 
               <g key={`end-${i}`}>
-                <circle cx={endPoint.x} cy={endPoint.y} r="4" fill={lineColor} />
+                <circle
+                  cx={endPoint.x}
+                  cy={endPoint.y}
+                  r="4"
+                  fill={theme === "dark" ? "#818589" : "#D3D3D3"}
+                />
                 <text
                   x={endPoint.x + 5}
                   y={endPoint.y - 5}
                   textAnchor="start"
                   fontSize="8"
-                  fill={lineColor}
+                  fill={theme === "dark" ? "#818589" : "#D3D3D3"}
                 >
                   {dot.end.label}
                 </text>
